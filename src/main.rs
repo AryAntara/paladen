@@ -398,14 +398,14 @@ fn ssh_connect(a: &Account, args: &[String]) -> Result<()> {
 
     let use_sshpass = !a.password.is_empty() && which("sshpass");
     if !a.password.is_empty() && !use_sshpass {
-        println!("(sshpass not installed — you'll be prompted for the password)");
-        println!("Password: {}", a.password);
+        eprintln!("(sshpass not installed — you'll be prompted for the password)");
+        eprintln!("Password: {}", a.password);
     }
 
     if args.is_empty() {
-        println!("Connecting to {} (port {})...", target, port);
+        eprintln!("Connecting to {} (port {})...", target, port);
     } else {
-        println!("Running on {} (port {}): {}", target, port, args.join(" "));
+        eprintln!("Running on {} (port {}): {}", target, port, args.join(" "));
     }
 
     let mut common_opts = vec![
@@ -456,7 +456,7 @@ fn scp_connect(a: &Account, args: &[String]) -> Result<()> {
 
     let use_sshpass = !a.password.is_empty() && which("sshpass");
 
-    println!("SCP with {} (port {})...", target, port);
+    eprintln!("SCP with {} (port {})...", target, port);
 
     let mut common_opts = vec![
         "-P".to_string(),
