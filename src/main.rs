@@ -7,11 +7,11 @@ use std::process::Command;
 
 #[derive(Parser)]
 #[command(
-    name = "accounts",
+    name = "paladen",
     about = "Account/credential manager with SSH launch"
 )]
 struct Cli {
-    /// Path to SQLite DB (default: ~/.config/accounts/accounts.db)
+    /// Path to SQLite DB (default: ~/.config/paladen/paladen.db)
     #[arg(long, global = true)]
     db: Option<PathBuf>,
 
@@ -91,9 +91,9 @@ fn db_path(cli_db: &Option<PathBuf>) -> Result<PathBuf> {
         return Ok(p.clone());
     }
     let mut p = dirs::config_dir().ok_or_else(|| anyhow!("no config dir"))?;
-    p.push("accounts");
+    p.push("paladen");
     std::fs::create_dir_all(&p)?;
-    p.push("accounts.db");
+    p.push("paladen.db");
     Ok(p)
 }
 

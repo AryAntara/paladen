@@ -71,7 +71,7 @@ paladen ssh 1 'mysqldump -u root database_name' > local_dump.sql
 
 ## Configuration
 
-Paladen stores its database at `~/.config/accounts/accounts.db` by default. You can specify a custom database path using the `--db` flag:
+Paladen stores its database at `~/.config/paladen/paladen.db` by default. You can specify a custom database path using the `--db` flag:
 
 ```bash
 paladen --db /path/to/custom.db list
